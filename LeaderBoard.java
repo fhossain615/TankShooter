@@ -13,10 +13,20 @@ import javax.swing.JPanel;
 
 
 public class LeaderBoard extends Menu{
-    private static String[] leaderName = {"Faruk    120","Tarikh    110","Mizan     100"};
+    private static String[] leaderName = new String[3];
     
     public void showLeaderBoard()
     {
+        //read from file
+        File file = new File("leaders.txt");
+        FileReader fileReader = new FileReader(file);
+        BufferedReader lines = new BufferedReader(fileReader);
+        
+        for(int i=0; i<3 ; i++)
+        {
+            leaderName[i]=lines.readLine();
+        }
+         ///////////////////////////////  
         JFrame frame = new JFrame("         Tank Shooter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -59,6 +69,14 @@ public class LeaderBoard extends Menu{
     }
     public void changeBoard(int score,String name)
     {
+        File file = new File("leaders.txt");
+        FileReader fileReader = new FileReader(file);
+        BufferedReader lines = new BufferedReader(fileReader);
+        
+        for(int i=0; i<3 ; i++)
+        {
+            leaderName[i]=lines.readLine();
+        }
         
         int[] topThree = new int[3];
         String[] first = leaderName[0].split("\\s+");
@@ -91,6 +109,17 @@ public class LeaderBoard extends Menu{
             {
                 leaderName[2]=myPosition;
             }
+            
+            //write on  file
+            
+            PrintWriter pw =new PrintWriter(file);
+        
+            for(int i=0; i<3 ; i++)
+            {
+                pw.write(leaderName[i]);
+            }
+            pw.close();
+            ///////////////////////////////  
         }
         
     }
