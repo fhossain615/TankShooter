@@ -17,7 +17,7 @@ public class TankThread extends Thread{
     public static String direction;
     
     private static String[] rotate = {"up","down","left","right"};
-    Game gm =new Game();
+    BattleField field = new BattleField();
     
     public TankThread(int possitionX,int possitionY, String direction) {
         this.possitionX = possitionX;
@@ -26,7 +26,7 @@ public class TankThread extends Thread{
     }
     private void checkPosition(int x, int y)
     {
-        if(gm.blockArray[x][y]==0)
+        if(field.blockArray[x][y]==0)
         {
             possitionX = x;
             possitionY = y;
@@ -49,7 +49,7 @@ public class TankThread extends Thread{
         int x,y;
         while(true)
         {
-            if(gm.blockArray[possitionX][possitionY]==0)
+            if(field.blockArray[possitionX][possitionY]==0)
             {
                 break;
             }

@@ -19,10 +19,17 @@ import javax.swing.JPanel;
  *
  * @author Admin
  */
-public class Help extends Menu{
+public class Help {
     private static String[] help = {"1.Press Space button to shoot","2.Use  left((<<) right(>>) to move"
             ,"3.Destroying each tank will give you 20 points","4.Catching lives add a live and 10 points",
             "5.End of lives will turn the game over"};
+    
+    /*Menu menu;
+    
+    Help(Menu menu) {
+        this.menu = menu;
+    }*/
+    
     public void showInstruction()
     {
         JFrame frame = new JFrame("         Tank Shooter");
@@ -51,11 +58,11 @@ public class Help extends Menu{
         
         
         JButton back = new JButton("Back");
-        //panel.setLayout(null);
+        
         back.setBounds(20,800,30,30);
         back.addActionListener((new ActionListener(){  
             public void actionPerformed(ActionEvent e){ 
-                viewMenu();
+                Menu.viewMenu();
                 
              frame.setVisible(false);
              return;

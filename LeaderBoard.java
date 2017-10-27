@@ -18,7 +18,15 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 
-public class LeaderBoard extends Menu{
+public class LeaderBoard{
+    
+    
+    /*Menu menu;
+    
+    LeaderBoard(Menu menu) {
+        this.menu = menu;
+    }*/
+    
     private static String[] leaderName = new String[3];
     
     public void showLeaderBoard() throws FileNotFoundException, IOException
@@ -62,7 +70,7 @@ public class LeaderBoard extends Menu{
         back.setBounds(20,800,30,30);
         back.addActionListener((new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
-              viewMenu();
+             Menu.viewMenu();
              frame.setVisible(false);
              return;
             }  

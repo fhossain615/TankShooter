@@ -5,7 +5,7 @@
  */
 package game;
 
-import static game.Menu.viewMenu;
+
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -29,43 +29,42 @@ public class ScoreBoard extends Display {
     public void showUpdate() {
 
     }
+    
+    /*Menu menu;
+    
+    ScoreBoard(Menu menu) {
+        this.menu = menu;
+    }*/
 
-    void createAndDisplayGUI(JFrame frame) {
+    void createAndDisplayGUI() {
 
+        frame = Game.mainFrame;
         JPanel panel = new JPanel();
         Container pane = frame.getContentPane();
-        //pane.setLayout(null);
-        //panel.setLayout(null);
         panel.setBounds(600, 100, 300, 300);
         Font defaultFont = panel.getFont();
-        //System.out.println("getX of panel "+panel.getX()+100);
-        //pane.setLocation(900,100);
         JLabel labelName = new JLabel();
         labelName.setLayout(null);
         labelName.setFont(new Font("Courier", 1, 12));
         labelName.setText("      Player: " + name + "      ");
-        //labelName.setBounds(600, 100, 300, 100);
         panel.add(labelName);
         JLabel labelScore = new JLabel();
         labelScore.setLayout(null);
         labelScore.setFont(new Font("Courier", 1, 12));
         labelScore.setText("     Score: " + score + "     ");
-        //labelScore.setBounds(900, 500, 300, 100);
         panel.add(labelScore);
         JLabel labelLife = new JLabel();
         labelLife.setLayout(null);
         labelLife.setFont(new Font("Courier", 1, 12));
-        //labelLife.setBounds(1200, 800, 300, 100);
         labelLife.setText("      Lives: " + lives + "     ");
         panel.add(labelLife);
         frame.add(panel);
         JButton returnToMenu = new JButton("Return to menu");
         returnToMenu.setLayout(null);
-        //panel.setLayout(null);
         returnToMenu.setBounds(900, 800, 30, 30);
         returnToMenu.addActionListener((new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                viewMenu();
+                Menu.viewMenu();
                 frame.setVisible(false);
                 return;
             }

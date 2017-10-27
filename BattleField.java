@@ -30,9 +30,7 @@ class DrawFunc extends Component {
     public int score = 0;
     public int lives = 5;
     BufferedImage[] img = new BufferedImage[12];
-    int[][] blockArray;
-
-    //private int[][] blockArray;
+    public int[][] blockArray;
 
     public void paint(Graphics g) {
         int p, q;
@@ -155,15 +153,13 @@ class DrawingPanel extends JPanel {
 }
 
 public class BattleField extends Display {
+    
+    
+    public int[][] blockArray;
 
-    
-    
-    
-    
-    void createAndDisplayGUI(JFrame frame) {
-        //frame = new JFrame(frameName);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    void createAndDisplayGUI() {
+        
+        frame = Game.mainFrame;
         DrawingPanel contentPane = new DrawingPanel();
         frame.setContentPane(contentPane);
         frame.pack();
@@ -171,7 +167,7 @@ public class BattleField extends Display {
         frame.setVisible(true);
         contentPane.requestFocusInWindow();
         JButton back = new JButton("Back");
-        //panel.setLayout(null);
+        
     }
     
 

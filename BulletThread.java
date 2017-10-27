@@ -16,7 +16,8 @@ public class BulletThread extends Thread{
     EnemyBullet eBullet = new EnemyBullet();
     SuperBullet sBullet = new SuperBullet();
     
-    Game gm =new Game();
+    BattleField field = new BattleField();
+    
     public BulletThread(int possitionX,int possitionY, String direction, String Owner) {
         this.possitionX = possitionX;
         this.possitionY = possitionY;
@@ -32,17 +33,17 @@ public class BulletThread extends Thread{
         int x,y;
         while(true)
         {
-            if(gm.blockArray[possitionX][possitionY]!=0)
+            if(field.blockArray[possitionX][possitionY]!=0)
             {
-                if(owner.contentEquals("user") && (gm.blockArray[possitionX][possitionY] ==9 || gm.blockArray[possitionX][possitionY] == 10 || gm.blockArray[possitionX][possitionY] == 11|| gm.blockArray[possitionX][possitionY] ==12))
+                if(owner.contentEquals("user") && (field.blockArray[possitionX][possitionY] ==9 || field.blockArray[possitionX][possitionY] == 10 || field.blockArray[possitionX][possitionY] == 11|| field.blockArray[possitionX][possitionY] ==12))
                 {
-                    gm.blockArray[possitionX][possitionY] = 0;
-                    gm.score += 10;
+                    field.blockArray[possitionX][possitionY] = 0;
+                    field.score += 10;
                 }
                 
-               else if(owner.contentEquals("enemy") && (gm.blockArray[possitionX][possitionY] ==5 || gm.blockArray[possitionX][possitionY] == 6 || gm.blockArray[possitionX][possitionY] == 7|| gm.blockArray[possitionX][possitionY] ==8))
+               else if(owner.contentEquals("enemy") && (field.blockArray[possitionX][possitionY] ==5 || field.blockArray[possitionX][possitionY] == 6 || field.blockArray[possitionX][possitionY] == 7|| field.blockArray[possitionX][possitionY] ==8))
                {
-                   gm.lives--;
+                   field.lives--;
                }
                 break;
             }

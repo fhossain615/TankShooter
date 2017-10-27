@@ -4,10 +4,7 @@ package game;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-/**
- *
- * @author Admin
- */
+
 public abstract class Display {
     JFrame frame;
     String frameName;
@@ -26,14 +23,14 @@ public abstract class Display {
         this.battleField = battleField;
     }
     
-    JFrame createFrame(){
+    /*JFrame createFrame(){
         frame = new JFrame();
         frame.setSize(665,665);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return frame;
-    }
+    }*/
     
-    abstract void createAndDisplayGUI(JFrame frame); 
+    abstract void createAndDisplayGUI(); 
     
     public void showUpdate()
     {

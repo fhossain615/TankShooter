@@ -11,9 +11,9 @@ package game;
  */
 public class UserBullet implements Bullet{
     public static int bulletType = 222;
-    Game gm = new Game();
+    BattleField field = new BattleField();
     public void moveBullet(int X, int Y)
     {
-        gm.blockArray[X][Y]=bulletType;
+        field.blockArray[X][Y]=bulletType;
     }
 }

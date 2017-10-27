@@ -24,7 +24,19 @@ import javax.swing.JPanel;
  */
 public class Menu extends JPanel{
     int option;
-    static JFrame frame = new JFrame("Tank Game Menu");
+    static JFrame frame;
+    Menu menu;
+    /*Menu(JFrame myFrame) {
+        
+        //menu = new Menu(frame);
+        this.frame = myFrame;
+    
+    }
+    Menu(Menu menu) {
+        
+        menu = new Menu(frame);
+    
+    }*/
     public static void addComponentsToPane(Container pane) {
         pane.setLayout(null);
 
@@ -46,12 +58,10 @@ public class Menu extends JPanel{
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("The game starts.");
-                JFrame displayFrame;
                 BattleField field = new BattleField();
                 ScoreBoard score = new ScoreBoard();
-                displayFrame = field.createFrame();
-                field.createAndDisplayGUI(displayFrame);
-                score.createAndDisplayGUI(displayFrame);
+                field.createAndDisplayGUI();
+                score.createAndDisplayGUI();
                 frame.setVisible(false);
             }
         });
@@ -103,7 +113,7 @@ public class Menu extends JPanel{
     
     static void viewMenu() {
         //Create and set up the window.
-        
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Set up the content pane.

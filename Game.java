@@ -1,38 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package game;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
-/**
- *
- * @author Admin
- */
+
 public class Game {
 
     int numberOfBlocks = 17;
     public int score = 0;
     public int lives = 5;
     
-
+    static JFrame mainFrame;
+    
     public int blockForLevel1[][];
 
     public String name;
@@ -67,11 +49,6 @@ public class Game {
         //show menu
     }
 
-
-
-    
-
-
                      
 
     private ActionListener panelAction = new ActionListener()
@@ -103,7 +80,12 @@ public class Game {
         }
     };
 
-
+    static JFrame createFrame(){
+        mainFrame = new JFrame();
+        mainFrame.setSize(665,665);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return mainFrame;
+    }
    
     public void exitGame()
     {
@@ -113,8 +95,9 @@ public class Game {
     public static void main(String[] args) throws IOException 
     {
         //drawBackground();
+        mainFrame = createFrame();
         Menu menu = new Menu();
-        menu.viewMenu();
+        Menu.viewMenu();
     }
     
 }

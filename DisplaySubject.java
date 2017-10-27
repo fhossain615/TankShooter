@@ -1,7 +1,7 @@
 
 package game;
 
-import static game.Game.blockArray;
+//import game.BattleField.blockArray;
 
 /**
  *
@@ -10,6 +10,9 @@ import static game.Game.blockArray;
 public class DisplaySubject extends Game{
     
     Display displayObject;
+    
+    BattleField field = new BattleField();
+    
     public void getUpdate()
     {
         
@@ -17,7 +20,7 @@ public class DisplaySubject extends Game{
     public void notifyAllObservers()
     {
         displayObject.updateData(score,lives,name);
-        displayObject.updateBattleField(blockArray);
+        displayObject.updateBattleField(field.blockArray);
         
     }
     public void show()
