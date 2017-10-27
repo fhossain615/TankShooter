@@ -39,20 +39,23 @@ public class Menu extends JPanel{
         pane.add(b4);
 
         Insets insets = pane.getInsets();
-        b1.setBounds(430 + insets.left, 220 + insets.top,
+        b1.setBounds(250 + insets.left, 220 + insets.top,
                      140, 30);
         b1.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("The game starts.");
-                Game.drawBackground();
-                
-                
+                JFrame displayFrame;
+                BattleField field = new BattleField();
+                ScoreBoard score = new ScoreBoard();
+                displayFrame = field.createFrame();
+                field.createAndDisplayGUI(displayFrame);
+                score.createAndDisplayGUI(displayFrame);
                 frame.setVisible(false);
             }
         });
-        b2.setBounds(430 + insets.left, 270 + insets.top,
+        b2.setBounds(250 + insets.left, 270 + insets.top,
                      140, 30);
         b2.addActionListener( new ActionListener(){
             @Override
@@ -65,7 +68,7 @@ public class Menu extends JPanel{
                 frame.setVisible(false);
             }
         });
-        b3.setBounds(430 + insets.left, 320 + insets.top,
+        b3.setBounds(250 + insets.left, 320 + insets.top,
                      140, 30);
         b3.addActionListener( new ActionListener(){
             @Override
@@ -81,7 +84,7 @@ public class Menu extends JPanel{
                 frame.setVisible(false);
             }
         });
-        b4.setBounds(430 + insets.left, 370 + insets.top,
+        b4.setBounds(250 + insets.left, 380 + insets.top,
                      140, 30);
         b4.addActionListener( new ActionListener(){
             @Override
@@ -108,8 +111,7 @@ public class Menu extends JPanel{
 
         //Size and display the window.
         Insets insets = frame.getInsets();
-        frame.setSize(1000 + insets.left + insets.right,
-                      600 + insets.top + insets.bottom);
+        frame.setSize(665,665);
         frame.setVisible(true);
     }
    

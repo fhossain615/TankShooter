@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * @author Admin
  */
 public class Help extends Menu{
-    private static String[] help = {"1.Press Space button to shoot","2.Use  <<(left) >>(right) to move"
+    private static String[] help = {"1.Press Space button to shoot","2.Use  left((<<) right(>>) to move"
             ,"3.Destroying each tank will give you 20 points","4.Catching lives add a live and 10 points",
             "5.End of lives will turn the game over"};
     public void showInstruction()
@@ -28,13 +28,13 @@ public class Help extends Menu{
         JFrame frame = new JFrame("         Tank Shooter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setSize(1000, 600);
+        frame.setSize(665,665);
         
         JPanel panel = new JPanel();
         
      
         JLabel label = new JLabel("Help",JLabel.CENTER);
-        label.setFont(new Font("Calibri", 1, 40));
+        label.setFont(new Font("Courier", 1, 15));
       
         //////////////
         DefaultListModel<String> l1 = new DefaultListModel<>();  
@@ -44,8 +44,8 @@ public class Help extends Menu{
         l1.addElement(help[3]);
         l1.addElement(help[4]);
         JList<String> list = new JList<>(l1);  
-        list.setBounds(250,100, 500,300);  
-        list.setFont(list.getFont().deriveFont(22.0f));
+        list.setBounds(160,200,320,200); 
+        list.setFont(new Font("Courier", 1, 15));
         frame.add(list);  
         /////////////////////
         

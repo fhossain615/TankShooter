@@ -36,13 +36,13 @@ public class LeaderBoard extends Menu{
         JFrame frame = new JFrame("         Tank Shooter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setSize(1000, 600);
+        frame.setSize(665,665);
         
         JPanel panel = new JPanel();
         
      
         JLabel label = new JLabel("Leader Board",JLabel.CENTER);
-        label.setFont(new Font("Calibri", 1, 40));
+        label.setFont(new Font("Courier", 1, 15));
       
         //////////////
         DefaultListModel<String> l1 = new DefaultListModel<>();  
@@ -51,8 +51,8 @@ public class LeaderBoard extends Menu{
         l1.addElement(leaderName[2]);  
  
         JList<String> list = new JList<>(l1);  
-        list.setBounds(400,200, 200,100);  
-        list.setFont(list.getFont().deriveFont(22.0f));
+        list.setBounds(230,200,200,100);  
+        list.setFont(new Font("Courier", 1, 18));
         frame.add(list);  
         /////////////////////
         
