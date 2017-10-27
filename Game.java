@@ -31,25 +31,7 @@ public class Game {
     int numberOfBlocks = 17;
     public int score = 0;
     public int lives = 5;
-    public static int blockArray[][]={
-            {0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,2,0,0,0,0,0,0,1,1,1,1,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,5,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,2,0},
-            {0,2,0,0,0,0,0,0,3,3,3,0,0,0,0,2,0},
-            {0,2,0,0,0,0,0,0,3,3,3,0,0,0,0,2,0},
-            {0,2,0,0,0,0,0,0,3,3,3,3,0,0,0,2,0},
-            {0,2,4,4,4,4,4,4,3,3,3,3,0,0,0,2,0},
-            {0,2,4,4,4,4,4,4,3,3,3,3,0,0,0,2,0},
-            {3,3,4,4,4,4,4,3,3,3,3,3,0,0,0,0,0},
-            {3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0},
-            {3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0},
-    };
+    
 
     public int blockForLevel1[][];
 
@@ -86,63 +68,9 @@ public class Game {
     }
 
 
-    public static void drawBackground()
-    {
-        //change pixelarray for the next round
-        new Game().createAndDisplayGUI();
-        
-    }
-
-    private void createAndDisplayGUI()
-    {
-        JFrame frame = new JFrame("Tank Field");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        DrawingPanel contentPane = new DrawingPanel();
-        frame.setContentPane(contentPane);
-        frame.pack();
-        frame.setLocationByPlatform(true);
-        frame.setVisible(true);
-        contentPane.requestFocusInWindow();
-        JButton back = new JButton("Back");
-        //panel.setLayout(null);
-    }
-    
-class DrawingPanel extends JPanel
-{
-
-    @Override
-    public Dimension getPreferredSize()
-    {
-        return (new Dimension(665,665));
-    }
-
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        super.paintComponent(g);
-        DrawFunc d = new DrawFunc(blockArray);
-        d.paint(g);
-    }
-    public DrawingPanel()
-    {
-        x = 0;
-        y = 0;
-
-        for (int i = 0; i < commands.length; i++)       
-            registerKeyboardAction(panelAction,
-                            commands[i],
-                            KeyStroke.getKeyStroke(commands[i]),
-                            JComponent.WHEN_IN_FOCUSED_WINDOW);
-    }
-}
-
-class DrawUserTank extends Component {
-    BufferedImage[] tankImage = new BufferedImage[4];
-    
 
     
-}
+
 
                      
 
@@ -175,42 +103,7 @@ class DrawUserTank extends Component {
         }
     };
 
- class DrawFunc extends Component {
 
-    BufferedImage[] img = new BufferedImage[12];
-    private int[][] blockArray;
-    public void paint(Graphics g) {
-      int p,q;
-        for(int i=0;i<numberOfBlocks;i++){
-            for(int j=0;j<numberOfBlocks;j++){
-                g.drawImage(img[blockArray[j][i]],i*35,j*35, null);
-                System.out.println("i "+i+" "+"j "+j);
-            }
-        }
-        
-    }
-    
-    public DrawFunc(int[][] blockArray) {
-        
-        this.blockArray = blockArray;
-        try{
-            img[0] = ImageIO.read(new File("0.jpg"));
-            img[1] = ImageIO.read(new File("1.jpg"));
-            img[2] = ImageIO.read(new File("2.jpg"));
-            img[3] = ImageIO.read(new File("3.jpg"));
-            img[4] = ImageIO.read(new File("4.jpg"));
-            img[5] = ImageIO.read(new File("5.jpg"));
-            img[6] = ImageIO.read(new File("6.jpg"));
-            img[7] = ImageIO.read(new File("7.jpg"));
-            img[8] = ImageIO.read(new File("8.jpg"));
-        } 
-        catch (IOException o)
-        {
-            System.out.println("File not found");
-        }
-        
-    }
- }
    
     public void exitGame()
     {
