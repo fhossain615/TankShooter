@@ -26,9 +26,7 @@ public class ScoreBoard extends Display {
     public static int lives = 3;
     public static String name = "Player Name";
 
-    public void showUpdate() {
-
-    }
+    
     
     /*Menu menu;
     
@@ -74,6 +72,10 @@ public class ScoreBoard extends Display {
         frame.setVisible(true);
 
         
+    }
+    
+    public void showUpdate() {
+        createAndDisplayGUI();
     }
 
 }

@@ -173,7 +173,8 @@ public class BattleField extends Display {
 
     public void showUpdate() {
     
-    
+        createAndDisplayGUI();
+        
     }
 
 }
