@@ -14,7 +14,7 @@ public class BossTank implements Tank{
     private int X;
     private int Y;
     private String direction;
-    
+    Game gm = new Game();
     public BossTank(int X, int Y, String direction)
     {
         this.X=X;
@@ -22,23 +22,23 @@ public class BossTank implements Tank{
         this.direction=direction;
     }
   
-    public void moveTank(int battleField[][]) {
+    public void moveTank() {
         if(direction=="up")
         {
-            battleField[X][Y]=21;
+            gm.blockArray[X][Y]=21;
         }
         else if(direction=="down")
         {
-            battleField[X][Y]=22;
+            gm.blockArray[X][Y]=22;
         }
         
         else if(direction=="right")
         {
-            battleField[X][Y]=23;
+            gm.blockArray[X][Y]=23;
         }
         else if(direction=="left")
         {
-            battleField[X][Y]=24;
+            gm.blockArray[X][Y]=24;
         }
        
     }

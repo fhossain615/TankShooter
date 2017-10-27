@@ -4,6 +4,12 @@ package game;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +21,7 @@ import javax.swing.JPanel;
 public class LeaderBoard extends Menu{
     private static String[] leaderName = new String[3];
     
-    public void showLeaderBoard()
+    public void showLeaderBoard() throws FileNotFoundException, IOException
     {
         //read from file
         File file = new File("leaders.txt");
@@ -26,7 +32,7 @@ public class LeaderBoard extends Menu{
         {
             leaderName[i]=lines.readLine();
         }
-         ///////////////////////////////  
+         ///////////////////////////////      
         JFrame frame = new JFrame("         Tank Shooter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -56,6 +62,7 @@ public class LeaderBoard extends Menu{
         back.setBounds(20,800,30,30);
         back.addActionListener((new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
+              viewMenu();
              frame.setVisible(false);
              return;
             }  
@@ -67,8 +74,9 @@ public class LeaderBoard extends Menu{
         frame.setVisible(true);
         
     }
-    public void changeBoard(int score,String name)
+    public void changeBoard(int score,String name) throws FileNotFoundException, IOException
     {
+        //read from file
         File file = new File("leaders.txt");
         FileReader fileReader = new FileReader(file);
         BufferedReader lines = new BufferedReader(fileReader);
@@ -77,6 +85,8 @@ public class LeaderBoard extends Menu{
         {
             leaderName[i]=lines.readLine();
         }
+         ///////////////////////////////    
+         
         
         int[] topThree = new int[3];
         String[] first = leaderName[0].split("\\s+");

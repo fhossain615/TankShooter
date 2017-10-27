@@ -5,30 +5,35 @@
  */
 package game;
 
+import java.util.Random;
+
 /**
  *
  * @author Admin
  */
 public class TankThread extends Thread{
-     public static int possitionX;
+    public static int possitionX;
     public static int possitionY;
     public static String direction;
     
     private static String[] rotate = {"up","down","left","right"};
     Game gm =new Game();
-
+    
     public TankThread(int possitionX,int possitionY, String direction) {
         this.possitionX = possitionX;
         this.possitionY = possitionY;
         this.direction = direction;
     }
-    
     private void checkPosition(int x, int y)
     {
-        if(gm.pixelArray[x][y]==0)
+        if(gm.blockArray[x][y]==0)
         {
             possitionX = x;
             possitionY = y;
+            
+            EnemyTank et = new EnemyTank(possitionX, possitionY, direction);
+            et.moveTank();
+            
         }
         else
         {
@@ -39,13 +44,12 @@ public class TankThread extends Thread{
         }
         
     }
-    
     public void run()
     {
         int x,y;
         while(true)
         {
-            if(gm.pixelArray[possitionX][possitionY]==0)
+            if(gm.blockArray[possitionX][possitionY]==0)
             {
                 break;
             }

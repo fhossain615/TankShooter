@@ -21,8 +21,8 @@ import javax.swing.JPanel;
  */
 public class Help extends Menu{
     private static String[] help = {"1.Press Space button to shoot","2.Use  <<(left) >>(right) to move"
-            ,"3.Distroying each tank will give you 20 points","4.Catching lives add a live and 10 points",
-            "5.Null of lives will turn the game over"};
+            ,"3.Destroying each tank will give you 20 points","4.Catching lives add a live and 10 points",
+            "5.End of lives will turn the game over"};
     public void showInstruction()
     {
         JFrame frame = new JFrame("         Tank Shooter");
@@ -54,7 +54,9 @@ public class Help extends Menu{
         //panel.setLayout(null);
         back.setBounds(20,800,30,30);
         back.addActionListener((new ActionListener(){  
-            public void actionPerformed(ActionEvent e){  
+            public void actionPerformed(ActionEvent e){ 
+                viewMenu();
+                
              frame.setVisible(false);
              return;
             }  

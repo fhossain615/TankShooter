@@ -15,6 +15,6 @@ public interface Tank {
      *
      * @return
      */
-    public void moveTank(int battleField[][]);
+    public void moveTank();
     
 }

@@ -9,12 +9,7 @@ package game;
  *
  * @author Admin
  */
-public class BattleField extends Display{
-
-   
-    
-    public void showUpdate() {
-     
-    }
+public class SuperBullet extends UserBullet{
+    public static int bulletType = 333;
     
 }

@@ -1,22 +1,28 @@
 
 package game;
 
+import static game.Game.blockArray;
+
 /**
  *
  * @author Admin
  */
 public class DisplaySubject extends Game{
-    public static int score;
-    public static int lives;
-    public static String name;
     
+    Display displayObject;
     public void getUpdate()
     {
         
     }
     public void notifyAllObservers()
     {
+        displayObject.updateData(score,lives,name);
+        displayObject.updateBattleField(blockArray);
         
+    }
+    public void show()
+    {
+        displayObject.showUpdate();
     }
     
 }

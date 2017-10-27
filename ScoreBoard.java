@@ -9,20 +9,15 @@ package game;
  *
  * @author Admin
  */
-public class ScoreBoard implements Display{
+public class ScoreBoard extends Display{
+    public static int score;
+    public static int lives;
+    public static String name;
     
-    public void update(int score,int lives,String name)
-    {
-        
-    }
-    public void showUpdate(int pixelArray)
+    public void showUpdate()
     {
         
     }
 
-    @Override
-    public void showUpdate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+   
 }
