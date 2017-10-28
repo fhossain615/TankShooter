@@ -1,12 +1,7 @@
 
 package game;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +9,6 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -52,27 +46,23 @@ public class Menu extends JPanel{
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("The game starts.");
-                BattleField field = new BattleField();
-                ScoreBoard score = new ScoreBoard();
-                field.initializeGUI();
-                score.createAndDisplayGUI();
-                //
+                //BattleField field = new BattleField();
+                //ScoreBoard score = new ScoreBoard();
+                //field.initializeGUI();
+                //score.createAndDisplayGUI();
                 frame.setVisible(false);
-                field.showUpdate();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                field.updateArray(6, 9, 5);
-                field.showUpdate();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                field.updateArray(6, 11, 5);
-                field.showUpdate();
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                       // Set up main window (using Swing's Jframe)
+                       JFrame frame = new JFrame("A Second Example");
+                       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                       MovingTank mTank = new MovingTank(); 
+                       mTank.createAndDisplayGUI();
+                       //frame.setContentPane();
+                       frame.pack();
+                       frame.setVisible(true);
+                    }
+                 });
                 
             }
         });

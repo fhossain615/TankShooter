@@ -23,7 +23,7 @@ import javax.swing.KeyStroke;
  *
  * @author Admin
  */
-class DrawFunc extends Component {
+/*class DrawFunc extends Component {
 
     int numberOfBlocks = 17;
     public int score = 0;
@@ -36,7 +36,7 @@ class DrawFunc extends Component {
         for (int i = 0; i < numberOfBlocks; i++) {
             for (int j = 0; j < numberOfBlocks; j++) {
                 g.drawImage(img[this.blockArray[j][i]], (i+1) * 35 - 10, (j+1) * 35 + 20, null);
-                //System.out.println("i " + i + " " + "j " + j);
+                System.out.println("i " + i + " " + "j " + j);
             }
         }
 
@@ -89,11 +89,6 @@ class DrawingPanel extends JPanel {
         d.paint(g);
     }
     
-    public void repaintComponent(Graphics g) {
-        //super.paintComponent(g);
-        DrawFunc d = new DrawFunc(Game.blockArray);
-        d.repaint();
-    }
 
     private ActionListener panelAction = new ActionListener() {
         @Override
@@ -147,6 +142,12 @@ public class BattleField extends Display {
 
     void createAndDisplayGUI() {
         
+        
+        
+    }
+    
+    public void initializeGUI(){
+    
         this.blockArray = Game.blockArray;
         frame = Game.mainFrame;
         DrawingPanel contentPane = new DrawingPanel();
@@ -159,17 +160,10 @@ public class BattleField extends Display {
         
     }
     
-    public void initializeGUI(){
-    
-        createAndDisplayGUI();
-        
-    }
-    
 
     public void showUpdate() {
     
-        DrawFunc d = new DrawFunc(Game.blockArray);
-        d.repaint();
+        createAndDisplayGUI();
         
     }
     
@@ -179,4 +173,4 @@ public class BattleField extends Display {
     
     }
 
-}
+}*/

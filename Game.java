@@ -1,6 +1,7 @@
 
 package game;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -24,6 +25,10 @@ public class Game {
     public int speedTank;
 
     public int speedBullet;
+    
+    public static Graphics g;
+    
+    public static int userTankX = 0, userTankY = 0;
     
     public static int blockArray[][] = {
         {0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0},
