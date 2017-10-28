@@ -20,7 +20,7 @@ public class DisplaySubject extends Game{
     public void notifyAllObservers()
     {
         displayObject.updateData(score,lives,name);
-        displayObject.updateBattleField(field.blockArray);
+        displayObject.updateBattleField(Game.blockArray);
         
     }
     public void show()

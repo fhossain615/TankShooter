@@ -16,7 +16,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
@@ -37,7 +36,7 @@ class DrawFunc extends Component {
         for (int i = 0; i < numberOfBlocks; i++) {
             for (int j = 0; j < numberOfBlocks; j++) {
                 g.drawImage(img[this.blockArray[j][i]], (i+1) * 35 - 10, (j+1) * 35 + 20, null);
-                System.out.println("i " + i + " " + "j " + j);
+                //System.out.println("i " + i + " " + "j " + j);
             }
         }
 
@@ -77,34 +76,23 @@ class DrawingPanel extends JPanel {
         "RIGHT"
     };
     
-    public int blockArray[][] = {
-        {0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 2, 0},
-        {0, 2, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 2, 0},
-        {0, 2, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 0, 0, 0, 2, 0},
-        {0, 2, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 0, 0, 0, 2, 0},
-        {3, 3, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0},
-        {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0},
-        {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0},};
+    
 
     public Dimension getPreferredSize() {
-        return (new Dimension(650, 650));
+        return (new Dimension(665, 665));
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        DrawFunc d = new DrawFunc(blockArray);
+        DrawFunc d = new DrawFunc(Game.blockArray);
         d.paint(g);
+    }
+    
+    public void repaintComponent(Graphics g) {
+        //super.paintComponent(g);
+        DrawFunc d = new DrawFunc(Game.blockArray);
+        d.repaint();
     }
 
     private ActionListener panelAction = new ActionListener() {
@@ -159,6 +147,7 @@ public class BattleField extends Display {
 
     void createAndDisplayGUI() {
         
+        this.blockArray = Game.blockArray;
         frame = Game.mainFrame;
         DrawingPanel contentPane = new DrawingPanel();
         frame.setContentPane(contentPane);
@@ -170,11 +159,24 @@ public class BattleField extends Display {
         
     }
     
-
-    public void showUpdate() {
+    public void initializeGUI(){
     
         createAndDisplayGUI();
         
+    }
+    
+
+    public void showUpdate() {
+    
+        DrawFunc d = new DrawFunc(Game.blockArray);
+        d.repaint();
+        
+    }
+    
+    public void updateArray(int x,int y,int value){
+    
+        blockArray[x][y] = value;
+    
     }
 
 }
