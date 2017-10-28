@@ -46,16 +46,10 @@ public class Menu extends JPanel{
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("The game starts.");
-                //BattleField field = new BattleField();
-                //ScoreBoard score = new ScoreBoard();
-                //field.initializeGUI();
-                //score.createAndDisplayGUI();
                 frame.setVisible(false);
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                       // Set up main window (using Swing's Jframe)
-                       //JFrame frame = new JFrame("A Second Example");
-                       //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        
                         ScoreBoard score = new ScoreBoard();
                         
                        BattleField field = null; 
@@ -65,14 +59,12 @@ public class Menu extends JPanel{
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         try {
-                            field.createAndShowGui();
+                            field.createAndDisplayGUI();
                         } catch (IOException ex) {
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         score.createAndDisplayGUI();
-                       //frame.setContentPane();
                        frame.pack();
-                       frame.setVisible(true);
                     }
                  });
                 

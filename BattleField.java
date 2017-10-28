@@ -33,12 +33,10 @@ public class BattleField extends JPanel {
     private int y = PREF_HEIGHT / 2;
     int imageNum;
     static JFrame frame;
-    int blockArray[][];
     BufferedImage[] img = new BufferedImage[12];
 
     public BattleField() throws IOException {
         frame = Game.mainFrame;
-        blockArray = Game.blockArray;
         imageNum = 5;
         try {
             img[0] = ImageIO.read(new File("0.jpg"));
@@ -104,9 +102,9 @@ public class BattleField extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         for (int i = 0; i < 17; i++) {
             for (int j = 0; j < 17; j++) {
-                System.out.println("block array " + blockArray[j][i]);
-                g2.drawImage(img[this.blockArray[j][i]], (i + 1) * 35 + 50, (j + 1) * 35 + 50, null);
-                //g2.drawI
+                System.out.println("block array " + Game.blockArray[j][i]);
+                
+                g2.drawImage(img[Game.blockArray[j][i]], (i + 1) * 35 -10, (j + 1) * 35 + 50, null);
                 System.out.println("i " + i + " " + "j " + j);
             }
         }
@@ -118,14 +116,12 @@ public class BattleField extends JPanel {
         return PREF_SIZE;
     }
 
-    static void createAndShowGui() throws IOException {
-      //JFrame frame = new JFrame("Move Tank Field");
-        //frame = Game.mainFrame;
+    static void createAndDisplayGUI() throws IOException {
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new MovingTank());
+        frame.getContentPane().add(new BattleField());
         frame.pack();
         frame.setAlwaysOnTop(true);
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -133,9 +129,9 @@ public class BattleField extends JPanel {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    createAndShowGui();
+                    createAndDisplayGUI();
                 } catch (IOException ex) {
-                    Logger.getLogger(MovingTank.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(BattleField.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

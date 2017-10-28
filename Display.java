@@ -23,12 +23,6 @@ public abstract class Display {
         this.battleField = battleField;
     }
     
-    /*JFrame createFrame(){
-        frame = new JFrame();
-        frame.setSize(665,665);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        return frame;
-    }*/
     
     abstract void createAndDisplayGUI(); 
     
