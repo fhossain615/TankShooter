@@ -56,8 +56,17 @@ public class Menu extends JPanel{
                        // Set up main window (using Swing's Jframe)
                        JFrame frame = new JFrame("A Second Example");
                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                       MovingTank mTank = new MovingTank(); 
-                       mTank.createAndDisplayGUI();
+                       MovingTank mTank = null; 
+                        try {
+                            mTank = new MovingTank();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        try {
+                            mTank.createAndShowGui();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                        //frame.setContentPane();
                        frame.pack();
                        frame.setVisible(true);
