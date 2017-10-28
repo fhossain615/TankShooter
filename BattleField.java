@@ -1,50 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package game;
 
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
-/**
- *
- * @author Admin
- */
-/*class DrawFunc extends Component {
+import javax.swing.*;
 
-    int numberOfBlocks = 17;
-    public int score = 0;
-    public int lives = 5;
+@SuppressWarnings("serial")
+public class BattleField extends JPanel {
+
+    private static final String UP = "UP";
+    private static final String DOWN = "DOWN";
+    private static final String LEFT = "LEFT";
+    private static final String RIGHT = "RIGHT";
+    private static final Color BACKGROUND = Color.black;
+    private static final Color BALL_COLOR = Color.yellow;
+    private static final int BALL_WIDTH = 30;
+    private static final int PREF_WIDTH = 500;
+    private static final int PREF_HEIGHT = PREF_WIDTH;
+    private static final Dimension PREF_SIZE = new Dimension(665, 665);
+    private int x = PREF_WIDTH / 2;
+    private int y = PREF_HEIGHT / 2;
+    int imageNum;
+    static JFrame frame;
+    int blockArray[][];
     BufferedImage[] img = new BufferedImage[12];
-    public int[][] blockArray;
 
-    public void paint(Graphics g) {
-        int p, q;
-        for (int i = 0; i < numberOfBlocks; i++) {
-            for (int j = 0; j < numberOfBlocks; j++) {
-                g.drawImage(img[this.blockArray[j][i]], (i+1) * 35 - 10, (j+1) * 35 + 20, null);
-                System.out.println("i " + i + " " + "j " + j);
-            }
-        }
-
-    }
-
-    public DrawFunc(int[][] blockArray) {
-
-        this.blockArray = blockArray;
+    public BattleField() throws IOException {
+        frame = Game.mainFrame;
+        blockArray = Game.blockArray;
+        imageNum = 5;
         try {
             img[0] = ImageIO.read(new File("0.jpg"));
             img[1] = ImageIO.read(new File("1.jpg"));
@@ -58,119 +53,91 @@ import javax.swing.KeyStroke;
         } catch (IOException o) {
             System.out.println("File not found");
         }
+        setBackground(BACKGROUND);
 
-    }
-}
+        int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
+        InputMap inputMap = getInputMap(condition);
+        ActionMap actionMap = getActionMap();
 
-class DrawingPanel extends JPanel {
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), UP);
+        actionMap.put(UP, new AbstractAction() {
+            public void actionPerformed(ActionEvent arg0) {
+                y -= 5;
+                imageNum = 5;
+                repaint();
+            }
+        });
 
-    int numberOfBlocks = 17;
-    //int[][] blockArray = new int[numberOfBlocks][];
-    private int x;
-    private int y;
-    private int dir;
-    private String[] commands = {
-        "UP",
-        "DOWN",
-        "LEFT",
-        "RIGHT"
-    };
-    
-    
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DOWN);
+        actionMap.put(DOWN, new AbstractAction() {
+            public void actionPerformed(ActionEvent arg0) {
+                y += 5;
+                imageNum = 7;
+                repaint();
+            }
+        });
 
-    public Dimension getPreferredSize() {
-        return (new Dimension(665, 665));
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), LEFT);
+        actionMap.put(LEFT, new AbstractAction() {
+            public void actionPerformed(ActionEvent arg0) {
+                x -= 5;
+                imageNum = 8;
+                repaint();
+            }
+        });
+
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), RIGHT);
+        actionMap.put(RIGHT, new AbstractAction() {
+            public void actionPerformed(ActionEvent arg0) {
+                x += 5;
+                imageNum = 6;
+                repaint();
+            }
+        });
+
+      // etc for left and right
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        DrawFunc d = new DrawFunc(Game.blockArray);
-        d.paint(g);
-    }
-    
-
-    private ActionListener panelAction = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            String command = (String) ae.getActionCommand();
-            if (command.equals(commands[0])) {
-                dir = 1;
-                y -= 10;
-                if (y < 0) {
-                    y = 0;
-                }
-            } else if (command.equals(commands[1])) {
-                dir = 3;
-                y += 10;
-                if (y > 450) {
-                    y = 450;
-                }
-            } else if (command.equals(commands[2])) {
-                dir = 4;
-                x -= 10;
-                if (x < 0) {
-                    x = 0;
-                }
-            } else if (command.equals(commands[3])) {
-                dir = 2;
-                x += 10;
-                if (x > 450) {
-                    x = 450;
-                }
+        Graphics2D g2 = (Graphics2D) g;
+        for (int i = 0; i < 17; i++) {
+            for (int j = 0; j < 17; j++) {
+                System.out.println("block array " + blockArray[j][i]);
+                g2.drawImage(img[this.blockArray[j][i]], (i + 1) * 35 + 50, (j + 1) * 35 + 50, null);
+                //g2.drawI
+                System.out.println("i " + i + " " + "j " + j);
             }
         }
-    };
+        g2.drawImage(img[imageNum], null, x, y);
+    }
 
-    public DrawingPanel() {
-        x = 0;
-        y = 0;
+    @Override
+    public Dimension getPreferredSize() {
+        return PREF_SIZE;
+    }
 
-        for (int i = 0; i < commands.length; i++) {
-            registerKeyboardAction(panelAction,
-                    commands[i],
-                    KeyStroke.getKeyStroke(commands[i]),
-                    JComponent.WHEN_IN_FOCUSED_WINDOW);
-        }
+    static void createAndShowGui() throws IOException {
+      //JFrame frame = new JFrame("Move Tank Field");
+        //frame = Game.mainFrame;
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new MovingTank());
+        frame.pack();
+        frame.setAlwaysOnTop(true);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    createAndShowGui();
+                } catch (IOException ex) {
+                    Logger.getLogger(MovingTank.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
 }
-
-public class BattleField extends Display {
-    
-    
-    public int[][] blockArray;
-
-    void createAndDisplayGUI() {
-        
-        
-        
-    }
-    
-    public void initializeGUI(){
-    
-        this.blockArray = Game.blockArray;
-        frame = Game.mainFrame;
-        DrawingPanel contentPane = new DrawingPanel();
-        frame.setContentPane(contentPane);
-        frame.pack();
-        frame.setLocationByPlatform(true);
-        frame.setVisible(true);
-        contentPane.requestFocusInWindow();
-        JButton back = new JButton("Back");
-        
-    }
-    
-
-    public void showUpdate() {
-    
-        createAndDisplayGUI();
-        
-    }
-    
-    public void updateArray(int x,int y,int value){
-    
-        blockArray[x][y] = value;
-    
-    }
-
-}*/

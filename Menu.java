@@ -54,19 +54,22 @@ public class Menu extends JPanel{
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                        // Set up main window (using Swing's Jframe)
-                       JFrame frame = new JFrame("A Second Example");
-                       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                       MovingTank mTank = null; 
+                       //JFrame frame = new JFrame("A Second Example");
+                       //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        ScoreBoard score = new ScoreBoard();
+                        
+                       BattleField field = null; 
                         try {
-                            mTank = new MovingTank();
+                            field = new BattleField();
                         } catch (IOException ex) {
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         try {
-                            mTank.createAndShowGui();
+                            field.createAndShowGui();
                         } catch (IOException ex) {
                             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        score.createAndDisplayGUI();
                        //frame.setContentPane();
                        frame.pack();
                        frame.setVisible(true);

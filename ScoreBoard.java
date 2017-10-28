@@ -6,6 +6,7 @@
 package game;
 
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -38,21 +39,27 @@ public class ScoreBoard extends Display {
 
         frame = Game.mainFrame;
         JPanel panel = new JPanel();
-        Container pane = frame.getContentPane();
-        panel.setBounds(600, 100, 300, 300);
+        //Container pane = frame.getContentPane();
+        panel.setBounds(600, 100, 100, 300);
         Font defaultFont = panel.getFont();
         JLabel labelName = new JLabel();
         labelName.setLayout(null);
+        labelName.setBackground(Color.yellow);
+        labelName.setFont(new Font("Courier", 1, 12));
         labelName.setFont(new Font("Courier", 1, 12));
         labelName.setText("      Player: " + name + "      ");
         panel.add(labelName);
         JLabel labelScore = new JLabel();
         labelScore.setLayout(null);
+        labelScore.setBackground(Color.yellow);
         labelScore.setFont(new Font("Courier", 1, 12));
         labelScore.setText("     Score: " + score + "     ");
         panel.add(labelScore);
         JLabel labelLife = new JLabel();
+        labelLife.setOpaque(false);
         labelLife.setLayout(null);
+        labelLife.setForeground(Color.yellow);
+        labelLife.setBackground(Color.yellow);
         labelLife.setFont(new Font("Courier", 1, 12));
         labelLife.setText("      Lives: " + lives + "     ");
         panel.add(labelLife);
