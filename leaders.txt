@@ -1,0 +1,3 @@
+Faruk    115
+Tariq    110
+Mizan     100
