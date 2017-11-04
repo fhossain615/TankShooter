@@ -17,7 +17,7 @@ import javax.swing.*;
 /* 
     Draw the battle ground
 
-Author : Dewan Tarikh Hasan
+Author : Dewan Tariq Hasan
 Author : Md. Faruk Hossain (only inside the action litchener of 'Z')
 
 */
