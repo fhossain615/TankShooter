@@ -5,7 +5,7 @@ package Game;
     carry all the share data and start the menu
 
 Author : Dewan Tarikh Hasan
-Author : Md Mizanur Rahman
+
 */
 public class UserTank implements Tank{
     private static UserTank tk = null;
