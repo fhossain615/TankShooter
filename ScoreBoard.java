@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 /* 
     shows the score board on top of the display
 
-Author : Dewan Tarikh Hasan
+Author : Dewan Tariq Hasan
 
 */
 public class ScoreBoard extends JPanel {
