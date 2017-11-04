@@ -11,7 +11,7 @@ import javax.swing.JFrame;
     carry all the share data and start the menu
 
 Author : Md.Faruk Hoaasin
-Author : Dewan Tarikh Hasan
+Author : Dewan Tariq Hasan
 Author : Md Mizanur Rahman
 */
 public class Game {
