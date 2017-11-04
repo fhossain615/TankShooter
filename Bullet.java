@@ -4,7 +4,7 @@ package Game;
 /* 
     
 
-Author : Md.Faruk Hoaasin
+Author : Md.Mizanur Rahman
 
 */
 public interface Bullet {
