@@ -4,7 +4,7 @@ package Game;
 /* 
     set the position of enemy tank
 
-Author : Md Mizanur Rahman
+Author : Md.Faruk Hossain
 */
 public class EnemyTank implements Tank{
     EnemyTank tk;
