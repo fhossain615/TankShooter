@@ -4,7 +4,7 @@ package Game;
 /* 
     set the position of user bullet
 
-Author : Md.Faruk Hoaasin
+Author : Md.Mizanur Rahman
 
 */
 public class UserBullet implements Bullet{
