@@ -3,7 +3,7 @@ package Game;
 /* 
     Set the position of Boss Tank
 
-Author : Md Mizanur Rahman
+Author : Md.Faruk Hossain
 */
 
 public class BossTank implements Tank{
