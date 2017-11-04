@@ -4,7 +4,7 @@ package Game;
 /* 
     super bullet maker class
 
-Author : Dewan Tarikh Hasan
+Author : Dewan Tariq Hasan
 
 */
 public class SuperBullet extends UserBullet{
