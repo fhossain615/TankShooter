@@ -3,7 +3,7 @@ package Game;
 
 /* 
     set the position of enemy bullet
-Author : Md.Faruk Hoaasin
+Author : Md.Mizanur Rahman
 
 */
 public class EnemyBullet implements Bullet{
