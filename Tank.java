@@ -4,7 +4,7 @@ package Game;
 /* 
     interface for different types of tank
 
-Author : Md Mizanur Rahman
+Author : Md.Faruk Hossain
 */
 public interface Tank {
 
