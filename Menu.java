@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /* 
     show the menu frame and ack like a manager
 
-Author : Dewan Tarikh Hasan
+Author : Dewan Tariq Hasan
 
 
 */
